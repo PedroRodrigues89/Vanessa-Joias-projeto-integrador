@@ -1,117 +1,87 @@
+// Música de fundo
+const musicBtn = document.getElementById('musicBtn');
+const backgroundMusic = document.getElementById('backgroundMusic');
+let isPlaying = false;
 
+musicBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    backgroundMusic.pause();
+    musicBtn.textContent = '🎵';
+  } else {
+    backgroundMusic.play();
+    musicBtn.textContent = '🔇';
+  }
+  isPlaying = !isPlaying;
+});
 
-
-/// Relógio
-function atualizarRelogio() {
-  const agora = new Date();
-  const horas = agora.getHours().toString().padStart(2, '0');
-  const minutos = agora.getMinutes().toString().padStart(2, '0');
-  const segundos = agora.getSeconds().toString().padStart(2, '0');
-  document.getElementById('relogio').innerHTML = `${horas}:${minutos}:${segundos}`;
-}
-setInterval(atualizarRelogio, 1000);
-
-// Clima e estação
-function atualizarClima() {
-  const agora = new Date();
-  const mes = agora.getMonth() + 1;
-  let estacao = '';
-
-  if (mes >= 3 && mes <= 5) estacao = 'Outono 🍂';
-  else if (mes >= 6 && mes <= 8) estacao = 'Inverno ❄️';
-  else if (mes >= 9 && mes <= 11) estacao = 'Primavera 🌸';
-  else estacao = 'Verão ☀️';
-
-  const dia = agora.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
-  document.getElementById('clima').innerHTML = `${dia} - ${estacao}`;
-}
-atualizarClima();
-
-// Carrinho atualizado
-const carrinho = [];
+// Carrinho
+let carrinho = [];
 
 function adicionarCarrinho(item, preco) {
-  carrinho.push({ item, preco });
-  renderizarCarrinho();
+  carrinho.push({item, preco});
+  atualizarCarrinho();
 }
 
-function removerCarrinho(index) {
-  carrinho.splice(index, 1);
-  renderizarCarrinho();
-}
-
-function renderizarCarrinho() {
+function atualizarCarrinho() {
   const lista = document.getElementById('itens-carrinho');
+  const total = document.getElementById('total');
   lista.innerHTML = "";
+  let soma = 0;
   carrinho.forEach((produto, index) => {
-    lista.innerHTML += `<li>${produto.item} - R$ ${produto.preco} 
-      <button onclick="removerCarrinho(${index})">Remover</button></li>`;
+    lista.innerHTML += `<li>${produto.item} - R$ ${produto.preco} <button onclick="removerItem(${index})">Remover</button></li>`;
+    soma += produto.preco;
   });
-  calcularValor();
+  total.innerText = `Total: R$ ${soma}`;
 }
 
-function calcularValor() {
-  const total = carrinho.reduce((soma, produto) => soma + produto.preco, 0);
-  document.getElementById('total').innerText = `Total: R$ ${total}`;
+function removerItem(index) {
+  carrinho.splice(index, 1);
+  atualizarCarrinho();
 }
 
-function enviarPedido() {
-  if (carrinho.length === 0) {
-    alert('Seu carrinho está vazio!');
-    return;
-  }
-  let mensagem = 'Olá, quero comprar:\n';
-  carrinho.forEach(produto => {
-    mensagem += `- ${produto.item} (R$${produto.preco})\n`;
-  });
-  const total = carrinho.reduce((soma, produto) => soma + produto.preco, 0);
-  mensagem += `\nTotal: R$${total}`;
-  const url = `https://wa.me/5521992081641?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, '_blank');
-}
-
-
-  
-// Modal de Confirmação
-function mostrarModal() {
-  document.getElementById('modal').style.display = 'flex';
-}
-
-function confirmarEnvio(confirmado) {
-  document.getElementById('modal').style.display = 'none';
-  if (confirmado) {
-    enviarPedido();
-  }
-}
-
-// Botão limpar pedido
 function limparCarrinho() {
-  carrinho.length = 0;
-  renderizarCarrinho();
+  carrinho = [];
+  atualizarCarrinho();
 }
 
-// Relógio atualizado
-function atualizarRelogio() {
-  const agora = new Date();
-  const horas = agora.getHours().toString().padStart(2, '0');
-  const minutos = agora.getMinutes().toString().padStart(2, '0');
-  const segundos = agora.getSeconds().toString().padStart(2, '0');
-  document.getElementById('relogio').innerHTML = `${horas}:${minutos}:${segundos}`;
-}
-setInterval(atualizarRelogio, 1000);
+function confirmarPedido() {
+  if (confirm("Deseja realmente enviar o pedido?")) {
+    let mensagem = "Olá, gostaria de fazer um pedido:\n";
+    let total = 0;
+    carrinho.forEach(produto => {
+      mensagem += `- ${produto.item}: R$ ${produto.preco}\n`;
+      total += produto.preco;
+    });
+    mensagem += `\nTotal: R$ ${total}`;
 
-// Clima e estação
+    const numero = "5521992081641"; // <-- Seu número do WhatsApp aqui
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+    limparCarrinho();
+  }
+}
+
+
+// Relógio
+setInterval(() => {
+  const data = new Date();
+  document.getElementById('relogio').innerText = data.toLocaleTimeString();
+}, 1000);
+
+// Clima (apenas estação)
 function atualizarClima() {
-  const agora = new Date();
-  const mes = agora.getMonth() + 1;
-  let estacao = '';
+  const data = new Date();
+  const mes = data.getMonth();
+  let estacao = "";
 
-  if (mes >= 3 && mes <= 5) estacao = 'Outono 🍂';
-  else if (mes >= 6 && mes <= 8) estacao = 'Inverno ❄️';
-  else if (mes >= 9 && mes <= 11) estacao = 'Primavera 🌸';
-  else estacao = 'Verão ☀️';
+  if (mes >= 2 && mes <= 4) estacao = "Outono 🍂";
+  else if (mes >= 5 && mes <= 7) estacao = "Inverno ❄️";
+  else if (mes >= 8 && mes <= 10) estacao = "Primavera 🌸";
+  else estacao = "Verão ☀️";
 
-  const dia = agora.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
-  document.getElementById('clima').innerHTML = `${dia} - ${estacao}`;
+  document.getElementById('clima').innerText = `Data: ${data.toLocaleDateString()} | ${estacao}`;
 }
 atualizarClima();
+
+
