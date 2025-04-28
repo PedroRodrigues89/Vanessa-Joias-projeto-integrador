@@ -2,12 +2,14 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanessa Joias</title>
   <link rel="stylesheet" href="./css/styles.css">
   <script defer src="./js/script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <!-- Fundo com brilhos -->
   <div class="brilhos"></div>
@@ -15,13 +17,12 @@
   <!-- Topo: redes sociais + menu -->
   <header>
     <div class="redes">
-      <a href="https://www.linkedin.com/in/pedro-rodrigues-8b447720a" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="pedrorodrigues89.github.io/Montagem-e-manuten-o.INFOPVTEC/#" target="_blank"><i class="fas fa-globe"></i></a>
-                    <a href="https://pedrorodrigues89.github.io/pagina-4/" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/pedrovanessa9/profilecard/?igsh=ZjRwdG03YTcycDdn" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://colunadofla.com/2025/03/bruno-henrique-elege-4-gols-marcantes-no-flamengo-2-sao-contra-o-vasco/"><i class="far fa-envelope"></i></a>
-                    <a href="https://wa.me/5521992081641" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i>
-                        </a>
+      <a href="https://sammyfreitas.github.io/portfolioSite/" target="_blank"><i class="fas fa-globe"></i></a>
+      <a href="https://pedrorodrigues89.github.io/pagina-4/" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/pedrovanessa9/profilecard/?igsh=ZjRwdG03YTcycDdn" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://colunadofla.com/2025/03/bruno-henrique-elege-4-gols-marcantes-no-flamengo-2-sao-contra-o-vasco/"><i class="far fa-envelope"></i></a>
+      <a href="https://wa.me/5521992081641" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i>
+        </a>
     </div>
     <nav id="menu">
       <a href="#">Home</a>
@@ -33,19 +34,21 @@
   <!-- Nome estilizado -->
   <h1 class="nome-loja">✨ Vanessa Joias ✨</h1>
 
-  <!-- Relógio e clima -->
+  <!-- Relógio e Clima -->
   <div class="info-topo">
     <div id="relogio"></div>
     <div id="clima"></div>
   </div>
 
-  <!-- Galeria de fotos -->
+  <!-- Galeria -->
   <section id="galeria" class="fotos">
+    <!-- Exemplo de card -->
     <div class="foto" onclick="adicionarCarrinho('Anel de Ouro', 1200)">
-      <img src="https://virtualjoias.com/media/catalog/product/cache/4cb602bec06e4ebab831ee0ef7245e1e/a/n/anel-formatura-ouro-18k-aro-duplo-gota-verde-esmeralda.jpg?width=400&quality=100">
+      <img src="https://virtualjoias.com/media/catalog/product/cache/4cb602bec06e4ebab831ee0ef7245e1e/a/n/anel-formatura-ouro-18k-aro-duplo-gota-verde-esmeralda.jpg?width=400&quality=100" alt="Anel de Ouro">
       <p>Anel de Ouro - R$ 1200</p>
       <button class="botao-carrinho">Adicionar ao Carrinho</button>
     </div>
+    <!-- Adicione aqui os outros produtos -->
     <div class="foto" onclick="adicionarCarrinho('Colar de Diamantes', 3500)">
       <img src="https://tiffany.vtexassets.com/arquivos/ids/171652/colar-tiffany-lock-em-ouro-branco-com-diamantes-72342119_1.jpg?v=638285955929400000" alt="Pulseira" alt="Colar de Diamantes">
       <p>Colar de Diamantes - R$ 3500</p>
@@ -68,7 +71,7 @@
       <button class="botao-carrinho">Adicionar ao Carrinho</button>
     </div>
     <div class="foto" onclick="adicionarCarrinho('Tiara de Pérolas', 2200)">
-      <img src="https://giulianebedmar.com.br/uploads/products/1725679557_848_IMG_1156.jpeg" alt="Tiara de Pérolas">
+      <img src="data:image/jpeg;base64,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" alt="Tiara de Pérolas">
       <p>Tiara de Pérolas - R$ 2200</p>
       <button class="botao-carrinho">Adicionar ao Carrinho</button>
     </div>
@@ -79,8 +82,8 @@
     <h2>Carrinho de Compras</h2>
     <ul id="itens-carrinho"></ul>
     <h3 id="total">Total: R$ 0</h3>
-    <button onclick="calcularValor()" class="botao-carrinho-final">Calcular Valor</button>
-    <button onclick="enviarPedido()" class="botao-carrinho-final">Enviar Pedido</button>
+    <button onclick="limparCarrinho()" class="botao-carrinho-final">Limpar Pedido</button>
+    <button onclick="confirmarPedido()" class="botao-carrinho-final">Enviar Pedido</button>
   </section>
 
   <!-- Botão flutuante do WhatsApp -->
@@ -88,46 +91,26 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- Controle de música -->
   <button class="music-control" id="musicBtn">🎵</button>
 
-<audio id="backgroundMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
+ <!-- Música de fundo corrigida -->
+<audio id="autoMusic" loop hidden>
+  <source src="https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" type="audio/mpeg">
 </audio>
-
-
-  <!-- Música de fundo -->
-  <audio autoplay loop hidden>
-    <source src="https://www.epidemicsound.com/pt/track/GpIymHvmMo/" type="audio/mpeg">
-  </audio>
-  <footer style="text-align: center; padding: 20px; color: cyan; background-color: #000; font-family: 'Orbitron', sans-serif; box-shadow: 0 -2px 10px cyan; margin-top: 50px;">
-    Desenvolvido por <a href="https://pedrorodrigues89.github.io/pagina-4/" target="_blank">Neldson Pedro</a>, no Curso de Programador FrontEnd do Senai (2025) Todos os direitos reservados
-</footer>
-<script>
-const musicBtn = document.getElementById('musicBtn');
-  const backgroundMusic = document.getElementById('backgroundMusic');
-  let isPlaying = false;
-
-  musicBtn.addEventListener('click', function() {
-    if (!isPlaying) {
-      backgroundMusic.play();
-      musicBtn.textContent = '🔇';
-    } else {
-      backgroundMusic.pause();
-      musicBtn.textContent = '🎵';
+<script>// Corrigir autoplay após interação do usuário
+  window.addEventListener('click', () => {
+    const autoMusic = document.getElementById('autoMusic');
+    if (autoMusic && autoMusic.paused) {
+      autoMusic.play().catch(error => console.log('Autoplay bloqueado:', error));
     }
-    isPlaying = !isPlaying;
-  });
+  }, { once: true });</script>
+  video>,
 
-  const swiper = new Swiper('.swiper', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    autoplay: {
-      delay: 3000,
-    },
-  });
-</script>
+  <!-- Rodapé -->
+  <footer>
+    Desenvolvido por Neldson Pedro | Curso FrontEnd Senai 2025
+  </footer>
+
 </body>
 </html>
