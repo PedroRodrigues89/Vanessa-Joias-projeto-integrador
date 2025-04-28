@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanessa Joias</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./js/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Fundo com brilhos -->
+  <div class="brilhos"></div>
+
+  <!-- Topo: redes sociais + menu -->
+  <header>
+    <div class="redes">
+      <a href="https://www.linkedin.com/in/pedro-rodrigues-8b447720a" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="pedrorodrigues89.github.io/Montagem-e-manuten-o.INFOPVTEC/#" target="_blank"><i class="fas fa-globe"></i></a>
+                    <a href="https://pedrorodrigues89.github.io/pagina-4/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/pedrovanessa9/profilecard/?igsh=ZjRwdG03YTcycDdn" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://colunadofla.com/2025/03/bruno-henrique-elege-4-gols-marcantes-no-flamengo-2-sao-contra-o-vasco/"><i class="far fa-envelope"></i></a>
+                    <a href="https://wa.me/5521992081641" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i>
+                        </a>
+    </div>
+    <nav id="menu">
+      <a href="#">Home</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#carrinho">Carrinho</a>
+    </nav>
+  </header>
+
+  <!-- Nome estilizado -->
+  <h1 class="nome-loja">✨ Vanessa Joias ✨</h1>
+
+  <!-- Relógio e clima -->
+  <div class="info-topo">
+    <div id="relogio"></div>
+    <div id="clima"></div>
+  </div>
+
+  <!-- Galeria de fotos -->
+  <section id="galeria" class="fotos">
+    <div class="foto" onclick="adicionarCarrinho('Anel de Ouro', 1200)">
+      <img src="https://virtualjoias.com/media/catalog/product/cache/4cb602bec06e4ebab831ee0ef7245e1e/a/n/anel-formatura-ouro-18k-aro-duplo-gota-verde-esmeralda.jpg?width=400&quality=100">
+      <p>Anel de Ouro - R$ 1200</p>
+      <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+    <div class="foto" onclick="adicionarCarrinho('Colar de Diamantes', 3500)">
+      <img src="https://tiffany.vtexassets.com/arquivos/ids/171652/colar-tiffany-lock-em-ouro-branco-com-diamantes-72342119_1.jpg?v=638285955929400000" alt="Pulseira" alt="Colar de Diamantes">
+      <p>Colar de Diamantes - R$ 3500</p>
+      <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+    <div class="foto" onclick="adicionarCarrinho('Brincos de Prata', 800)">
+      <img src="https://www.soprata.com.br/cdn/shop/files/64990.jpg?v=1745416296&width=400" alt="Brincos de Prata">
+      <p>Brincos de Prata - R$ 800</p>
+      <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+    <!-- Novos produtos -->
+    <div class="foto" onclick="adicionarCarrinho('Pulseira de Ouro', 1800)">
+      <img src="https://virtualjoias.com/media/catalog/product/cache/4cb602bec06e4ebab831ee0ef7245e1e/p/u/pulseira-ouro-18k-piastrine-21-cm-vj9975_1.jpg?width=400&quality=100" alt="Pulseira de Ouro">
+      <p>Pulseira de Ouro - R$ 1800</p>
+      <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+    <div class="foto" onclick="adicionarCarrinho('Relógio Luxo', 5000)">
+      <img src="https://lojavivara.vtexassets.com/unsafe/720x720/center/middle/https%3A%2F%2Flojavivara.vtexassets.com%2Farquivos%2Fids%2F636393%2FRelogio-Baume-and-Mercier-Feminino-Aco-M0A10679-05-ATM-65691_hover.jpg%3Fv%3D638352453726600000" alt="Relógio Luxo">
+      <p>Relógio Luxo - R$ 5000</p>
+      <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+    <div class="foto" onclick="adicionarCarrinho('Tiara de Pérolas', 2200)">
+      <img src="https://giulianebedmar.com.br/uploads/products/1725679557_848_IMG_1156.jpeg" alt="Tiara de Pérolas">
+      <p>Tiara de Pérolas - R$ 2200</p>
+      <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+  </section>
+
+  <!-- Carrinho -->
+  <section id="carrinho" class="carrinho">
+    <h2>Carrinho de Compras</h2>
+    <ul id="itens-carrinho"></ul>
+    <h3 id="total">Total: R$ 0</h3>
+    <button onclick="calcularValor()" class="botao-carrinho-final">Calcular Valor</button>
+    <button onclick="enviarPedido()" class="botao-carrinho-final">Enviar Pedido</button>
+  </section>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/5521992081641" target="_blank" class="botao-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <button class="music-control" id="musicBtn">🎵</button>
+
+<audio id="backgroundMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+
+  <!-- Música de fundo -->
+  <audio autoplay loop hidden>
+    <source src="https://www.epidemicsound.com/pt/track/GpIymHvmMo/" type="audio/mpeg">
+  </audio>
+  <footer style="text-align: center; padding: 20px; color: cyan; background-color: #000; font-family: 'Orbitron', sans-serif; box-shadow: 0 -2px 10px cyan; margin-top: 50px;">
+    Desenvolvido por <a href="https://pedrorodrigues89.github.io/pagina-4/" target="_blank">Neldson Pedro</a>, no Curso de Programador FrontEnd do Senai (2025) Todos os direitos reservados
+</footer>
+<script>
+const musicBtn = document.getElementById('musicBtn');
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  let isPlaying = false;
+
+  musicBtn.addEventListener('click', function() {
+    if (!isPlaying) {
+      backgroundMusic.play();
+      musicBtn.textContent = '🔇';
+    } else {
+      backgroundMusic.pause();
+      musicBtn.textContent = '🎵';
+    }
+    isPlaying = !isPlaying;
+  });
+
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    autoplay: {
+      delay: 3000,
+    },
+  });
+</script>
+</body>
+</html>
